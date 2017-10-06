@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="db_practice@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.0">
+    <root id="1"/>
+    <database id="2" parent="1" name="db_practice">
+      <ObjectId>23053</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <schema id="3" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2017-09-23.09:09:48.591</IntrospectionTimestamp>
+      <IntrospectionStateNumber>32484</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="4" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="5" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="6" parent="2" name="pg_temp_1">
+      <ObjectId>11848</ObjectId>
+    </schema>
+    <schema id="7" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11849</ObjectId>
+    </schema>
+    <schema id="8" parent="2" name="information_schema">
+      <ObjectId>12381</ObjectId>
+    </schema>
+    <sequence id="9" parent="3" name="documents_id_seq">
+      <ObjectId>23064</ObjectId>
+      <StateNumber>32482</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="10" parent="3" name="stop_words_id_seq">
+      <ObjectId>23075</ObjectId>
+      <StateNumber>32483</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <sequence id="11" parent="3" name="words_id_seq">
+      <ObjectId>23086</ObjectId>
+      <StateNumber>32484</StateNumber>
+      <SequenceIdentity>1</SequenceIdentity>
+    </sequence>
+    <table id="12" parent="3" name="documents">
+      <ObjectId>23066</ObjectId>
+      <StateNumber>32484</StateNumber>
+    </table>
+    <table id="13" parent="3" name="schema_version">
+      <ObjectId>23054</ObjectId>
+      <StateNumber>32479</StateNumber>
+    </table>
+    <table id="14" parent="3" name="stop_words">
+      <ObjectId>23077</ObjectId>
+      <StateNumber>32483</StateNumber>
+    </table>
+    <table id="15" parent="3" name="words">
+      <ObjectId>23088</ObjectId>
+      <StateNumber>32484</StateNumber>
+    </table>
+    <column id="16" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32482</StateNumber>
+      <DefaultExpression>nextval(&apos;documents_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="17" parent="12" name="file_name">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32482</StateNumber>
+    </column>
+    <index id="18" parent="12" name="documents_pkey">
+      <ObjectId>23073</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="19" parent="12" name="documents_pkey">
+      <ObjectId>23074</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>documents_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="20" parent="13" name="installed_rank">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32479</StateNumber>
+    </column>
+    <column id="21" parent="13" name="version">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <StateNumber>32479</StateNumber>
+    </column>
+    <column id="22" parent="13" name="description">
+      <Position>3</Position>
+      <DataType>varchar(200)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32479</StateNumber>
+    </column>
+    <column id="23" parent="13" name="type">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32479</StateNumber>
+    </column>
+    <column id="24" parent="13" name="script">
+      <Position>5</Position>
+      <DataType>varchar(1000)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32479</StateNumber>
+    </column>
+    <column id="25" parent="13" name="checksum">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>32479</StateNumber>
+    </column>
+    <column id="26" parent="13" name="installed_by">
+      <Position>7</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32479</StateNumber>
+    </column>
+    <column id="27" parent="13" name="installed_on">
+      <Position>8</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32479</StateNumber>
+      <DefaultExpression>now()</DefaultExpression>
+    </column>
+    <column id="28" parent="13" name="execution_time">
+      <Position>9</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32479</StateNumber>
+    </column>
+    <column id="29" parent="13" name="success">
+      <Position>10</Position>
+      <DataType>boolean|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32479</StateNumber>
+    </column>
+    <index id="30" parent="13" name="schema_version_pk">
+      <ObjectId>23061</ObjectId>
+      <ColNames>installed_rank</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="31" parent="13" name="schema_version_s_idx">
+      <ObjectId>23063</ObjectId>
+      <ColNames>success</ColNames>
+    </index>
+    <key id="32" parent="13" name="schema_version_pk">
+      <ObjectId>23062</ObjectId>
+      <ColNames>installed_rank</ColNames>
+      <UnderlyingIndexName>schema_version_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="33" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32483</StateNumber>
+      <DefaultExpression>nextval(&apos;stop_words_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="34" parent="14" name="stop_word">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32483</StateNumber>
+    </column>
+    <index id="35" parent="14" name="stop_words_pkey">
+      <ObjectId>23084</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="36" parent="14" name="stop_words_pkey">
+      <ObjectId>23085</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>stop_words_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="37" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32484</StateNumber>
+      <DefaultExpression>nextval(&apos;words_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="38" parent="15" name="word">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>32484</StateNumber>
+    </column>
+    <column id="39" parent="15" name="document_id">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>32484</StateNumber>
+    </column>
+    <index id="40" parent="15" name="words_pkey">
+      <ObjectId>23095</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="41" parent="15" name="words_pkey">
+      <ObjectId>23096</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>words_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="42" parent="15" name="words_document_id_fkey">
+      <ObjectId>23097</ObjectId>
+      <ColNames>document_id</ColNames>
+      <RefTableName>documents</RefTableName>
+      <RefKeyName>documents_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
