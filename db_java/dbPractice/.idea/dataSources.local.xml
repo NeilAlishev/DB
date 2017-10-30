@@ -9,5 +9,13 @@
       <secret-storage>master_key</secret-storage>
       <resolve-scope>db_practice:public</resolve-scope>
     </data-source>
+    <data-source name="db_practice5@localhost" uuid="46a79601-30c7-4aba-8160-06bcce1dba2a">
+      <database-info product="PostgreSQL" version="9.6.3" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.1.1">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <resolve-scope>db_practice5:public</resolve-scope>
+    </data-source>
   </component>
 </project>
