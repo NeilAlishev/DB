@@ -1,0 +1,40 @@
+1) select pg_size_pretty(pg_total_relation_size('simple_table'));
+ pg_size_pretty
+----------------
+ 8192 bytes
+
+ 2) После добавления 5 миллионов записей.
+ select pg_size_pretty(pg_total_relation_size('simple_table'));
+ pg_size_pretty
+----------------
+ 249 MB
+(1 row)
+
+3) После обновления 4 миллионов записей.
+select pg_size_pretty(pg_total_relation_size('simple_table'));
+ pg_size_pretty
+----------------
+ 655 MB
+(1 row)
+
+4) После удаления 1 миллиона записей.
+select pg_size_pretty(pg_total_relation_size('simple_table'));
+ pg_size_pretty
+----------------
+ 655 MB
+(1 row)
+
+5) После VACUUM simple_table;
+select pg_size_pretty(pg_total_relation_size('simple_table'));
+ pg_size_pretty
+----------------
+ 655 MB
+(1 row)
+
+6) После VACUUM FULL simple_table;
+select pg_size_pretty(pg_total_relation_size('simple_table'));
+ pg_size_pretty
+----------------
+ 285 MB
+(1 row)
+

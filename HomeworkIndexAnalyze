@@ -1,0 +1,42 @@
+1) После создания индекса на поле 'id'
+Все равно используется Seq Scan.
+
+explain analyze select * from test_index_table where id = 3;
+
+                                                QUERY PLAN
+-----------------------------------------------------------------------------------------------------------
+ Seq Scan on test_index_table  (cost=0.00..1.62 rows=1 width=36) (actual time=0.016..0.026 rows=1 loops=1)
+   Filter: (id = 3)
+   Rows Removed by Filter: 49
+ Planning time: 0.077 ms
+ Execution time: 0.046 ms
+(5 rows)
+
+2) После SET enable_seqscan = off;
+Используется Index Scan
+
+explain analyze select * from test_index_table where id = 3;
+                                                          QUERY PLAN
+------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using test_index on test_index_table  (cost=0.14..8.16 rows=1 width=36) (actual time=1.704..1.706 rows=1 loops=1)
+   Index Cond: (id = 3)
+ Planning time: 0.081 ms
+ Execution time: 1.740 ms
+(4 rows)
+
+
+При этом мы видим, что время выполнение запроса при использовании индекса больше, чем при обычном Sequence Scan (1.740 ms > 0.046 ms).
+
+Это связано с тем, что количество строк в таблице небольшое (50), поэтому быстрей найти элемент напрямую в таблице, чем сначала искать его в индексе, а потом совершать еще одну IO операцию и брать его из таблицы.
+
+3) После добавления еще 950 строк в таблицу и SET enable_seqscan = on;
+Теперь используется Index Scan, так как количество строк в таблице стало больше и теперь запрос с индексом работает быстрей чем Sequence scan.
+
+explain analyze select * from test_index_table where id = 3;
+                                                          QUERY PLAN
+------------------------------------------------------------------------------------------------------------------------------
+ Index Scan using test_index on test_index_table  (cost=0.28..8.29 rows=1 width=14) (actual time=0.017..0.018 rows=1 loops=1)
+   Index Cond: (id = 3)
+ Planning time: 0.086 ms
+ Execution time: 0.041 ms
+(4 rows)
