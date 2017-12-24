@@ -1,0 +1,11 @@
+create 'camera_info', 'f1', SPLITS => ['4', '8', '12']
+
+# row key - month number
+put 'camera_info', 1, 'f1: car_number', 'some_number1'
+put 'camera_info', 1, 'f1: speed', 65
+
+put 'camera_info', 5, 'f1: car_number', 'some_number4'
+put 'camera_info', 5, 'f1: speed', 50
+
+get 'camera_info', '1', {TIMERANGE => [1514008264830, 1514008374830],
+FILTER => "SingleColumnValueFilter ('f1’, ‘speed’, >, 50)"}
